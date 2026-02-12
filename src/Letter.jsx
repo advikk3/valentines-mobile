@@ -40,7 +40,12 @@ const Letter = () => {
       <div className="vintage-letter-paper">
         <div className="letter-content-area">
           <pre className="handwritten-text">
-            {letterContent.join("\n")}
+            {letterContent.map((line, index) => (
+              <React.Fragment key={index}>
+                {line}
+                {"\n"}
+              </React.Fragment>
+            ))}
           </pre>
         </div>
 
