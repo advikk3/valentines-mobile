@@ -1,0 +1,311 @@
+.game-container {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
+  color: white;
+  font-family: 'Arial', sans-serif;
+  overflow-y: auto;
+  z-index: 1000;
+}
+
+.game-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px 30px;
+  background: rgba(0, 0, 0, 0.7);
+  backdrop-filter: blur(10px);
+  border-bottom: 2px solid #ff4081;
+}
+
+.game-title {
+  font-size: 2.5rem;
+  background: linear-gradient(45deg, #ff4081, #ff79b0);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  text-align: center;
+  margin: 0;
+  text-shadow: 0 2px 10px rgba(255, 64, 129, 0.3);
+}
+
+.back-button, .restart-button {
+  background: linear-gradient(135deg, #ff4081, #ff79b0);
+  border: none;
+  color: white;
+  padding: 12px 25px;
+  border-radius: 50px;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 5px 15px rgba(255, 64, 129, 0.3);
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.back-button:hover {
+  transform: translateX(-5px);
+  box-shadow: 0 8px 20px rgba(255, 64, 129, 0.5);
+}
+
+.restart-button:hover {
+  transform: scale(1.05);
+  box-shadow: 0 8px 20px rgba(255, 64, 129, 0.5);
+}
+
+.game-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 30px;
+  gap: 30px;
+}
+
+.instructions {
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(10px);
+  padding: 25px;
+  border-radius: 20px;
+  width: 90%;
+  max-width: 1000px;
+  text-align: center;
+  border: 2px solid rgba(255, 64, 129, 0.3);
+}
+
+.instructions h3 {
+  color: #ff79b0;
+  margin-bottom: 15px;
+  font-size: 1.5rem;
+}
+
+.instructions p {
+  color: #ccc;
+  margin-bottom: 20px;
+  font-size: 1.1rem;
+}
+
+.controls, .game-info {
+  display: flex;
+  justify-content: center;
+  gap: 30px;
+  flex-wrap: wrap;
+  margin-top: 20px;
+}
+
+.controls span, .game-info span {
+  background: rgba(255, 64, 129, 0.2);
+  padding: 10px 20px;
+  border-radius: 10px;
+  border: 1px solid rgba(255, 64, 129, 0.4);
+  font-size: 0.9rem;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.game-canvas-container {
+  position: relative;
+  background: rgba(0, 0, 0, 0.3);
+  border-radius: 15px;
+  padding: 10px;
+  border: 3px solid #ff4081;
+  box-shadow: 0 0 30px rgba(255, 64, 129, 0.2);
+}
+
+.game-canvas {
+  background: #1e1e2e;
+  border-radius: 10px;
+  display: block;
+}
+
+.win-screen, .lose-screen {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background: rgba(0, 0, 0, 0.95);
+  padding: 40px;
+  border-radius: 20px;
+  text-align: center;
+  border: 3px solid;
+  min-width: 400px;
+  z-index: 100;
+  animation: popIn 0.5s ease-out;
+}
+
+.win-screen {
+  border-color: #4CAF50;
+  box-shadow: 0 0 40px rgba(76, 175, 80, 0.5);
+}
+
+.lose-screen {
+  border-color: #FF5252;
+  box-shadow: 0 0 40px rgba(255, 82, 82, 0.5);
+}
+
+.win-screen h2 {
+  color: #4CAF50;
+  font-size: 2.5rem;
+  margin-bottom: 20px;
+}
+
+.lose-screen h2 {
+  color: #FF5252;
+  font-size: 2.5rem;
+  margin-bottom: 20px;
+}
+
+.win-screen p, .lose-screen p {
+  color: #ccc;
+  font-size: 1.2rem;
+  margin-bottom: 30px;
+}
+
+.continue-button, .retry-button {
+  background: linear-gradient(135deg, #4CAF50, #66BB6A);
+  border: none;
+  color: white;
+  padding: 15px 40px;
+  border-radius: 50px;
+  font-size: 1.2rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 8px 25px rgba(76, 175, 80, 0.4);
+  margin-top: 20px;
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.retry-button {
+  background: linear-gradient(135deg, #FF5252, #FF867C);
+  box-shadow: 0 8px 25px rgba(255, 82, 82, 0.4);
+}
+
+.continue-button:hover {
+  transform: scale(1.05);
+  box-shadow: 0 12px 35px rgba(76, 175, 80, 0.6);
+}
+
+.retry-button:hover {
+  transform: scale(1.05);
+  box-shadow: 0 12px 35px rgba(255, 82, 82, 0.6);
+}
+
+@keyframes popIn {
+  from {
+    opacity: 0;
+    transform: translate(-50%, -50%) scale(0.8);
+  }
+  to {
+    opacity: 1;
+    transform: translate(-50%, -50%) scale(1);
+  }
+}
+
+/* Character info tooltips */
+.character-info {
+  position: absolute;
+  background: rgba(0, 0, 0, 0.9);
+  padding: 10px;
+  border-radius: 8px;
+  border: 2px solid #ff4081;
+  font-size: 12px;
+  pointer-events: none;
+  z-index: 10;
+  white-space: nowrap;
+  animation: floatInfo 2s infinite alternate;
+}
+
+@keyframes floatInfo {
+  from { transform: translateY(0); }
+  to { transform: translateY(-5px); }
+}
+
+/* Responsive design */
+@media (max-width: 850px) {
+  .game-canvas {
+    width: 95vw;
+    height: auto;
+    max-height: 70vh;
+  }
+  
+  .game-title {
+    font-size: 1.8rem;
+  }
+  
+  .controls, .game-info {
+    gap: 15px;
+  }
+  
+  .controls span, .game-info span {
+    font-size: 0.8rem;
+    padding: 8px 15px;
+  }
+  
+  .win-screen, .lose-screen {
+    min-width: 300px;
+    padding: 30px;
+  }
+  
+  .win-screen h2, .lose-screen h2 {
+    font-size: 2rem;
+  }
+}
+
+@media (max-width: 600px) {
+  .game-header {
+    flex-direction: column;
+    gap: 15px;
+    padding: 15px;
+  }
+  
+  .game-title {
+    font-size: 1.5rem;
+  }
+  
+  .instructions {
+    padding: 15px;
+  }
+  
+  .controls, .game-info {
+    flex-direction: column;
+    gap: 10px;
+    align-items: center;
+  }
+  
+  .continue-button, .retry-button {
+    padding: 12px 30px;
+    font-size: 1rem;
+  }
+}
+
+/* Game objects styling */
+.platform {
+  background: linear-gradient(to bottom, #8B4513, #A0522D);
+  border-radius: 8px;
+  box-shadow: inset 0 -3px 5px rgba(0,0,0,0.3);
+}
+
+.player {
+  background: linear-gradient(135deg, #4CAF50, #66BB6A);
+  border-radius: 8px;
+  box-shadow: 0 4px 15px rgba(76, 175, 80, 0.5);
+}
+
+.enemy {
+  background: linear-gradient(135deg, #9C27B0, #BA68C8);
+  border-radius: 10px;
+  box-shadow: 0 4px 15px rgba(156, 39, 176, 0.5);
+}
+
+.bullet {
+  background: linear-gradient(90deg, #FF5252, #FF867C);
+  border-radius: 2px;
+  box-shadow: 0 0 10px rgba(255, 82, 82, 0.8);
+}

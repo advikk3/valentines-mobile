@@ -1,0 +1,94 @@
+.jar-container {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 30px;
+}
+
+/* Jar image */
+.jar-image {
+  width: 250px;
+  height: auto;
+  cursor: pointer;
+  z-index: 1;
+}
+
+/* Chits inside jar */
+.chits-container {
+  position: absolute;
+  top: 10%;
+  width: 100%;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 10px;
+  z-index: 2;
+  pointer-events: none;
+}
+
+.chit {
+  width: 50px;
+  height: 25px;
+  border-radius: 5px;
+  pointer-events: auto;
+  cursor: default;
+  transition: transform 0.3s;
+}
+
+.chit:hover {
+  transform: scale(1.2) rotate(-5deg);
+}
+
+.chit.blue {
+  background-color: #3498db;
+}
+
+.chit.red {
+  background-color: #e74c3c;
+}
+
+/* Pink sticky note */
+.sticky-note {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%) scale(0);
+  background: #ff69b4; /* pink */
+  padding: 30px 25px;
+  border-radius: 20px;
+  color: white;
+  font-family: "Comic Sans MS", cursive, sans-serif;
+  font-size: 18px;
+  font-weight: bold;
+  text-align: center;
+  z-index: 999;
+  animation: pop 0.5s forwards;
+  max-width: 90%;
+  white-space: pre-wrap;
+}
+
+/* Pop animation */
+@keyframes pop {
+  0% { transform: translate(-50%, -50%) scale(0); opacity: 0; }
+  80% { transform: translate(-50%, -50%) scale(1.2); opacity: 1; }
+  100% { transform: translate(-50%, -50%) scale(1); opacity: 1; }
+}
+
+/* Take another button */
+.take-another {
+  margin-top: 15px;
+  padding: 8px 20px;
+  border: none;
+  border-radius: 10px;
+  background-color: white;
+  color: #ff69b4;
+  font-weight: bold;
+  cursor: pointer;
+  font-size: 16px;
+  transition: transform 0.2s;
+}
+
+.take-another:hover {
+  transform: scale(1.1);
+}
